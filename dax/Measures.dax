@@ -1,0 +1,37 @@
+Inventory Value = SUM(FactInventory[InventoryValueINR])
+
+Stockout Records = SUM(FactInventory[StockoutFlag])
+
+Inventory Records = COUNTROWS(FactInventory)
+
+Stockout Rate % = DIVIDE([Stockout Records],[Inventory Records])
+
+Supplier OTIF % = AVERAGE(FactInventory[SupplierOTIF])
+
+Fill Rate % = AVERAGE(FactInventory[FillRate])
+
+Average Lead Time = AVERAGE(FactInventory[LeadTimeDays])
+
+Demand Qty = SUM(FactInventory[DemandQty])
+
+Purchase Qty = SUM(FactInventory[PurchaseQty])
+
+Backorder Qty = SUM(FactInventory[BackorderQty])
+
+Excess Stock Value = SUM(FactInventory[ExcessStockValueINR])
+
+Slow Moving Records = SUM(FactInventory[SlowMovingFlag])
+
+Slow Moving Rate % = DIVIDE([Slow Moving Records],[Inventory Records])
+
+Average Days of Inventory = AVERAGE(FactInventory[DaysOfInventory])
+
+Inventory Turnover Proxy = DIVIDE([Demand Qty],AVERAGE(FactInventory[StockOnHand]))
+
+Service Gap % = 1 - [Fill Rate %]
+
+Reorder Risk Records =
+CALCULATE(
+    COUNTROWS(FactInventory),
+    FILTER(FactInventory,FactInventory[StockOnHand] <= FactInventory[ReorderPoint])
+)
