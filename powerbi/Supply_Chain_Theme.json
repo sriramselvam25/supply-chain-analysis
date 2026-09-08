@@ -1,0 +1,7 @@
+{
+  "name": "Supply Chain & Inventory Intelligence",
+  "dataColors": ["#0F766E", "#1D4ED8", "#334155", "#D97706", "#B91C1C", "#64748B", "#047857", "#7C3AED"],
+  "background": "#FFFFFF",
+  "foreground": "#0F172A",
+  "tableAccent": "#0F766E"
+}
